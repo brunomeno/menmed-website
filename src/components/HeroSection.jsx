@@ -1,3 +1,5 @@
+import { Activity, Scan, HeartPulse, Stethoscope } from 'lucide-react';
+
 export default function HeroSection() {
   return (
     <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-16 md:py-24">
@@ -24,16 +26,23 @@ export default function HeroSection() {
           {/* Right Visual - 2x2 Equipment Category Cards */}
           <div className="hidden md:grid grid-cols-2 gap-4">
             {[
-              { name: 'Ultrasound Machine', image: '/ultrasound-machine.jpg' },
-              { name: 'Digital X-Ray', image: '/digital-xray.jpg' },
-              { name: 'Patient Monitor', image: '/patient-monitor.jpg' },
-              { name: 'Surgical Equipment', image: '/surgical-equipment.jpg' },
-            ].map((card) => (
-              <div key={card.name} className="bg-white rounded-xl overflow-hidden shadow-md flex flex-col">
-                <img src={card.image} alt={card.name} className="w-full h-28 object-cover" />
-                <div className="px-3 py-2.5 text-center">
-                  <span className="text-gray-800 text-sm font-semibold">{card.name}</span>
-                </div>
+              { name: 'Ultrasound Machine', Icon: Activity },
+              { name: 'Digital X-Ray', Icon: Scan },
+              { name: 'Patient Monitor', Icon: HeartPulse },
+              { name: 'Surgical Equipment', Icon: Stethoscope },
+            ].map(({ name, Icon }) => (
+              <div
+                key={name}
+                className="rounded-xl flex flex-col items-center justify-center py-8 gap-3 shadow-md transition-colors duration-200 cursor-pointer"
+                style={{
+                  backgroundColor: '#0D2444',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                }}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor = '#163461'}
+                onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0D2444'}
+              >
+                <Icon size={64} color="white" strokeWidth={1.5} />
+                <span className="text-white text-sm font-bold text-center px-2">{name}</span>
               </div>
             ))}
           </div>
