@@ -1,6 +1,6 @@
 import { Activity, Scan, HeartPulse, Stethoscope } from 'lucide-react';
 
-export default function HeroSection() {
+export default function HeroSection({ onRequestQuote }) {
   return (
     <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-16 md:py-24">
       <div className="section-container">
@@ -14,10 +14,16 @@ export default function HeroSection() {
               Wholesale pricing for hospitals and clinics across Nigeria. Access 500+ medical equipment models with guaranteed 48-hour delivery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+              <button
+                onClick={onRequestQuote}
+                className="px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              >
                 Browse Equipment
               </button>
-              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-all">
+              <button
+                onClick={onRequestQuote}
+                className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-all"
+              >
                 Request Catalog
               </button>
             </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ onRequestQuote }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -38,7 +38,10 @@ export default function Navbar() {
 
           {/* Desktop CTA Button */}
           <div className="hidden md:block">
-            <button className="px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 text-sm lg:text-base">
+            <button
+              onClick={onRequestQuote}
+              className="px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 text-sm lg:text-base"
+            >
               Request Quote
             </button>
           </div>
@@ -96,7 +99,10 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <button className="w-full mt-4 px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 text-sm">
+            <button
+              onClick={onRequestQuote}
+              className="w-full mt-4 px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 text-sm"
+            >
               Request Quote
             </button>
           </div>

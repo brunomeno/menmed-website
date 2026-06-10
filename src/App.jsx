@@ -1,10 +1,17 @@
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
+import QuoteModal from './components/QuoteModal';
 
 export default function App() {
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
+  const openQuoteModal = () => setIsQuoteModalOpen(true);
+  const closeQuoteModal = () => setIsQuoteModalOpen(false);
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navbar />
+      <Navbar onRequestQuote={openQuoteModal} />
       {/* Trust Bar */}
       <div className="bg-gray-100 border-b border-gray-200 py-3">
         <div className="section-container">
@@ -29,7 +36,7 @@ export default function App() {
         </div>
       </div>
       <main className="flex-1">
-        <HomePage />
+        <HomePage onRequestQuote={openQuoteModal} />
       </main>
       <footer className="bg-gray-900 text-gray-100 py-8">
         <div className="section-container">
@@ -75,6 +82,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <QuoteModal isOpen={isQuoteModalOpen} onClose={closeQuoteModal} />
     </div>
   );
 }

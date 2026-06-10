@@ -50,7 +50,7 @@ const testimonials = [
   },
 ];
 
-export default function HomePage() {
+export default function HomePage({ onRequestQuote }) {
   const stats = [
     { number: '500+', label: 'Equipment Models', description: 'Comprehensive catalog of medical devices' },
     { number: '48hr', label: 'Delivery', description: 'Fast nationwide delivery' },
@@ -59,7 +59,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <HeroSection />
+      <HeroSection onRequestQuote={onRequestQuote} />
 
       {/* Stats Section */}
       <section className="py-16 md:py-20 bg-gray-50">
