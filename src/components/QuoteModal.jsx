@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 const categories = [
   'Medical Equipment',
@@ -51,13 +52,12 @@ export default function QuoteModal({ isOpen, onClose }) {
     setStatus('submitting');
 
     try {
-      const response = await fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
+      const { full_name, organization, email, category, message } = form;
+      const { error } = await supabase
+        .from('quotes')
+        .insert([{ full_name, organization, email, category, message }]);
 
-      if (!response.ok) throw new Error('Request failed');
+      if (error) throw error;
 
       setStatus('success');
     } catch {
